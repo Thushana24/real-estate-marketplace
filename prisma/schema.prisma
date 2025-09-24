@@ -9,6 +9,69 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+enum PropertyType {
+  HOUSE
+  LAND
+  APARTMENT
+  RENTAL
+}
+
+enum PropertyStatus {
+  ACTIVE
+  INACTIVE
+  SOLD
+  RENTED
+}
+
+model User {
+  id        Int     @id @default(autoincrement())
+  firstName String? @db.VarChar(255)
+  lastName  String? @db.VarChar(255)
+  email     String  @unique(map: "email")
+  password  String
+
+  Properties Property[] @relation("UserListings")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Property {
+  id          Int            @id @default(autoincrement())
+  title       String
+  description String?
+  address     String
+  price       Float
+  type        PropertyType
+  status      PropertyStatus @default(ACTIVE)
+
+  PropertyImage PropertyImage[]
+
+  // Owner (seller)
+  ownerId Int  @unique(map: "ownerId")
+  Owner   User @relation("UserListings", fields: [ownerId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([ownerId])
+}
+
+model PropertyImage {
+  id        Int     @id @default(autoincrement())
+  url       String
+  thumbnail Boolean @default(false)
+  order     Int     @default(1)
+
+  propertyId Int      @unique(map: "propertyId")
+  property   Property @relation(fields: [propertyId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([propertyId])
 }
