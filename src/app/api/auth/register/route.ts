@@ -2,6 +2,8 @@ import prisma from "@/lib/prisma";
 import { RegisterUserSchema } from "@/schemas/user.schema";
 import { NextRequest, NextResponse } from "next/server";
 import argon2 from "argon2";
+import generateToken from "../helpers/generateToken";
+import handleError from "../helpers/handleError";
 
 export async function POST(request: NextRequest) {
   try {
@@ -28,7 +30,7 @@ export async function POST(request: NextRequest) {
 
     const hashedPassword = await argon2.hash(password);
 
-    const user = await prisma.user.create({
+    const newUser = await prisma.user.create({
       data: {
         firstName,
         lastName,
@@ -37,7 +39,9 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    const { password: _, ...userResponse } = user;
+    const { password: _, ...userResponse } = newUser;
+
+    const token = generateToken(newUser.id);
 
     return NextResponse.json(
       {
@@ -46,16 +50,13 @@ export async function POST(request: NextRequest) {
           user: {
             ...userResponse,
           },
+          token,
         },
         message: "User created successfully.",
       },
       { status: 201 }
     );
   } catch (error) {
-    console.error(error);
-    return NextResponse.json(
-      { message: "Failed to register user" },
-      { status: 500 }
-    );
+    return handleError(error, "Failed to register user");
   }
 }
