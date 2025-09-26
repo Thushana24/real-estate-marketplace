@@ -1,8 +1,8 @@
 import React from "react";
-import { MdPets } from "react-icons/md";
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoLogoInstagram } from "react-icons/io5";
+import { Building2 } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -10,7 +10,7 @@ const Footer = () => {
       {/* First container */}
       <div className="flex flex-col gap-10">
         <div className="flex items-center gap-2">
-          <MdPets className="size-12 overflow-hidden object-cover leading-none" />
+          <Building2 className="size-12 overflow-hidden object-cover leading-none" />
           <h1 className="text-4xl leading-none font-bold">CasaGo</h1>
         </div>
 

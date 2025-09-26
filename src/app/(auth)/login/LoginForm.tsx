@@ -11,7 +11,7 @@ import { useAuthActions } from "@/stores/authStore";
 import Cookie from "js-cookie";
 import { AxiosError } from "axios";
 import { CustomError } from "../../api/helpers/handleError";
-import { LoginInput } from "@/app/api/auth/types";
+import { LoginInput } from "@/app/api/types";
 import { useLogin } from "@/app/api-client/login/useLogin";
 import cookieKeys from "@/configs/cookieKeys";
 import Input from "@/app/components/Input";

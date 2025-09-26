@@ -8,7 +8,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <>
-      <section className="absolute top-0 z-10 my-5 w-full border-gray-500  border-t-2 border-b-2 py-1 ">
+      <section className=" top-0 z-10 my-5 w-full border-gray-500  border-t-2 border-b-2 py-1 ">
         <div className="flex w-full justify-between gap-10 border-t-2 border-b-2 px-5 py-1 sm:px-10 border-gray-500  ">
           {/* logo and name */}
           <div className="flex items-center justify-between gap-2 bg-gradient-to-r from-orange-800 to-pink-600 bg-clip-text text-transparent ">
@@ -23,7 +23,7 @@ const Header = () => {
               <a
                 key={href}
                 href={href}
-                className="rounded-full px-3 py-1 text-md font-bold uppercase text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-600 transition-all duration-300  hover:text-black"
+                className="rounded-full px-3 py-1 text-md font-bold uppercase text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-600 transition-all duration-300 hover:text-black"
               >
                 {label.toUpperCase()}
               </a>

@@ -8,7 +8,7 @@ export async function middleware(request: NextRequest, _: NextResponse) {
   const sessionUser = request.cookies.get(cookieKeys.USER);
   const user = JSON.parse(sessionUser?.value || "null") as User | null;
 
-  const onlyPublicRoutes = ["/login", "/register", "/"];
+  const onlyPublicRoutes = ["/login", "/register"];
 
   const isOnlyPublic = onlyPublicRoutes.includes(request.nextUrl.pathname);
 
@@ -44,10 +44,10 @@ export async function middleware(request: NextRequest, _: NextResponse) {
 
 export const config = {
   matcher: [
-    "/",
     "/login/:paths*",
     "/register/:paths*",
     "/protected/:paths*",
     "/dashboard/:paths*",
+    "/property/add/:paths*",
   ],
 };

@@ -1,8 +1,8 @@
 // app/register/page.tsx
 
 import { RegisterForm } from "./RegisterForm";
-import { MdPets } from "react-icons/md";
 import Image from "next/image";
+import { Building2 } from "lucide-react";
 
 export default function RegisterPage() {
   return (
@@ -30,12 +30,12 @@ export default function RegisterPage() {
             <div className="flex sm:items-center sm:justify-center gap-2">
               <div className="w-min rounded-tl-xl rounded-br-xl bg-violet-700 stroke-white p-1 text-white">
                 <div className="flex items-center justify-center relative size-10 rounded-tl-xl rounded-br-xl bg-white/40">
-                  <MdPets className="size-6 w-full overflow-hidden object-cover" />
+                  <Building2 className="size-6 w-full overflow-hidden object-cover" />
                 </div>
               </div>
               <div className="flex flex-col justify-center">
                 <h2 className="text-xl font-medium text-gray-800 dark:text-white">
-                  MyLanka
+                  CasaGo
                 </h2>
                 <p className="text-[0.65rem] text-gray-600 dark:text-white/60">
                   Find your space, Live your place.

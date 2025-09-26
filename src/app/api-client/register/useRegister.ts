@@ -1,4 +1,4 @@
-import { RegisterInput } from "@/app/api/auth/types";
+import { RegisterInput } from "@/app/api/types";
 import { useApi } from "@/providers/ApiProvider";
 import { useCreateMutation } from "../apiFactory";
 import { User } from "@prisma/client";

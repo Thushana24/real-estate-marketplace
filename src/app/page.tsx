@@ -11,9 +11,8 @@ export default function Home() {
         <div className="-mt-10 mb-10 flex w-full flex-col items-center justify-center gap-10 sm:-mt-16 md:-mt-20">
           <Card />
         </div>
+        <Footer />
       </main>
-
-      <Footer />
     </div>
   );
 }

@@ -1,7 +1,7 @@
-import { LoginInput } from "@/app/api/types";
 import { useApi } from "@/providers/ApiProvider";
 import { useCreateMutation } from "../apiFactory";
-import { User } from "@prisma/client";
+import { Property, PropertyImage } from "@prisma/client";
+import { PropertyInput } from "@/app/api/types";
 
 export const useLogin = ({
   invalidateQueryKey,
@@ -12,24 +12,18 @@ export const useLogin = ({
 
   return useCreateMutation<
     Record<string, any>,
-    LoginInput,
+    PropertyInput,
     {
-      data: {
-        user: User;
-        token: string;
-      };
+      data: Property & { PropertyImage: PropertyImage[] };
     },
     {
-      data: {
-        user: User;
-        token: string;
-      };
+      data: Property & { PropertyImage: PropertyImage[] };
     }
   >({
     apiClient: jsonApiClient,
     method: "post",
-    url: "/auth/login",
-    errorMessage: "Failed to login.",
+    url: "/property/add",
+    errorMessage: "Failed to add property.",
     invalidateQueryKey,
     mutationOptions: {},
   });

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { IoFingerPrintOutline } from "react-icons/io5";
 import { Lock, EyeOff, Eye, Mail, User } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { RegisterInput } from "../../api/auth/types";
+import { RegisterInput } from "../../api/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { RegisterUserSchema } from "@/schemas/user.schema";
 import { useRouter } from "next/navigation";
