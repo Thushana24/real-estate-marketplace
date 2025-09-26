@@ -15,7 +15,7 @@ import { propertyTypes } from "@/data/propertyTypes";
 
 export const AddPropertyForm = () => {
   const router = useRouter();
-  const [images, setImages] = useState<File[]>([]);
+  const [images, setImages] = useState<{ url: string }[]>([]);
 
   const {
     handleSubmit,
@@ -34,10 +34,15 @@ export const AddPropertyForm = () => {
 
   const handleFormSubmit = async (values: PropertyInput) => {
     try {
+      if (images.length === 0) {
+        setError("title", { message: "Please add at least one image URL" });
+        return;
+      }
+
       const propertyData = {
         ...values,
-        PropertyImage: images.map((file, index) => ({
-          url: URL.createObjectURL(file),
+        PropertyImage: images.map((img, index) => ({
+          url: img.url,
           order: index + 1,
           thumbnail: index === 0,
         })),
@@ -45,6 +50,7 @@ export const AddPropertyForm = () => {
 
       await addProperty({ body: propertyData });
       reset();
+      setImages([]);
       router.push("/");
     } catch (error) {
       const err = error as AxiosError;
@@ -126,24 +132,48 @@ export const AddPropertyForm = () => {
             )}
           </div>
 
-          {/* Property Images */}
+          {/* Property Images (URLs) */}
           <div className="flex flex-col">
             <label className="mb-1 text-gray-700 font-medium">
-              Property Images
+              Property Images (URLs)
             </label>
-            <input
-              type="file"
-              multiple
-              onChange={(e) =>
-                setImages(e.target.files ? Array.from(e.target.files) : [])
-              }
-              className="border rounded-lg p-2 focus:ring focus:ring-indigo-200"
-            />
+            {images.map((img, index) => (
+              <div key={index} className="flex gap-2 mb-2">
+                <input
+                  type="text"
+                  placeholder={`Enter Image ${index + 1} URL`}
+                  value={img.url}
+                  onChange={(e) => {
+                    const newImages = [...images];
+                    newImages[index].url = e.target.value;
+                    setImages(newImages);
+                  }}
+                  className="border rounded-lg p-2 flex-1 focus:ring focus:ring-indigo-200"
+                />
+                <button
+                  type="button"
+                  onClick={() =>
+                    setImages(images.filter((_, i) => i !== index))
+                  }
+                  className="bg-gradient-to-bl from-gray-500 to-pink-500 text-white px-3 rounded-lg"
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
+
+            <button
+              type="button"
+              onClick={() => setImages([...images, { url: "" }])}
+              className="mt-2  text-Black border-2 px-4 py-2 rounded-lg"
+            >
+              Add Image URL
+            </button>
           </div>
 
           {/* Submit Button */}
           <div className="flex justify-center mt-4">
-            <Button loading={isSubmitting}>Add</Button>
+            <Button loading={isSubmitting}>Add Property</Button>
           </div>
         </form>
       </div>
