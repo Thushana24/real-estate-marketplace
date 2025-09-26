@@ -2,8 +2,8 @@ import { LoginUserSchema } from "@/schemas/user.schema";
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { verify } from "argon2";
-import generateToken from "../helpers/generateToken";
-import handleError from "../helpers/handleError";
+import generateToken from "../../helpers/generateToken";
+import handleError from "../../helpers/handleError";
 
 /**
  * @route POST /api/auth/login

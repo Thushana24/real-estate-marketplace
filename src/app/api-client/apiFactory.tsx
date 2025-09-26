@@ -8,7 +8,7 @@ import {
   InfiniteData,
 } from "@tanstack/react-query";
 import { AxiosError, AxiosInstance, AxiosResponse, isAxiosError } from "axios";
-import queryClient from "./queryClient";
+import queryClient from "./QueryClient";
 
 // Toast service for displaying errors
 const toastService = {

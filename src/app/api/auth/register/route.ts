@@ -2,8 +2,8 @@ import prisma from "@/lib/prisma";
 import { RegisterUserSchema } from "@/schemas/user.schema";
 import { NextRequest, NextResponse } from "next/server";
 import argon2 from "argon2";
-import generateToken from "../helpers/generateToken";
-import handleError from "../helpers/handleError";
+import generateToken from "../../helpers/generateToken";
+import handleError from "../../helpers/handleError";
 
 export async function POST(request: NextRequest) {
   try {

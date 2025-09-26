@@ -48,9 +48,9 @@ const Input = forwardRef<HTMLInputElement, IInput>(
 
     const variantClasses = {
       default:
-        "border-gray-300 focus:ring-[#adb5bd] focus:border-[#adb5bd] text-gray-800 dark:text-white ",
+        "border-gray-300   focus:ring-violet-700 focus:border-violet-700 text-gray-800 dark:text-white ",
       error:
-        "border-gray-300 focus:ring-[#adb5bd] focus:border-[#adb5bd] text-gray-300 dark:text-white ",
+        "border-gray-300 focus:ring-[#adb5bd] focus:border-[#adb5bd] text-gray-600 dark:text-white ",
       success:
         "border-green-500 focus:ring-green-500 focus:border-green-500 text-green-900 bg-green-50",
       warning:
@@ -59,8 +59,8 @@ const Input = forwardRef<HTMLInputElement, IInput>(
 
     const iconColorClasses = {
       default:
-        "text-gray-600 peer-focus:text-gray-800 dark:text-gray-400  dark:peer-focus:text-[white]",
-      error: "text-gray-400 peer-focus:text-pink-500",
+        "text-gray-600 peer-focus:text-violet-700 dark:text-gray-400  dark:peer-focus:text-[white]",
+      error: "text-gray-600  tracking-wide peer-focus:text-600",
       success: "text-green-500",
       warning: "text-yellow-500",
     };
@@ -93,7 +93,7 @@ const Input = forwardRef<HTMLInputElement, IInput>(
             ref={ref}
             id={inputId}
             className={cn(
-              "peer  w-full rounded-lg  font-medium transition-all duration-500 ease-in-out focus:ring-1 focus:ring-offset-1 focus:outline-0 bg-gray-700/10  dark:bg-white/10",
+              "peer w-full rounded-tl-xl rounded-br-xl border font-medium transition-all duration-500 ease-in-out focus:ring-1 right-1 focus:outline-0 bg-gray-700/10  dark:bg-white/10",
               sizeClasses[size],
               variantClasses[currentVariant],
               hasLeftIcon && "pl-10",
@@ -171,65 +171,3 @@ const Input = forwardRef<HTMLInputElement, IInput>(
 Input.displayName = "Input";
 
 export default Input;
-
-// import { cn } from "@/utilities/cn";
-// import React, { ComponentProps, forwardRef } from "react";
-
-// interface IInput extends ComponentProps<"input"> {
-//   varient?: string;
-//   Icon?: React.FC<React.SVGProps<SVGSVGElement>>;
-// }
-
-// const Input = forwardRef<HTMLInputElement, IInput>(
-//   ({ className, varient = "gray", Icon, ...rest }, ref) => {
-//     return (
-//       <div className="w-full flex flex-col relative">
-//         <input
-//           ref={ref}
-//           className={cn(
-//             "peer rounded-xl border border-gray-300 px-3 py-2 text-sm font-medium text-gray-800 pl-10 focus:outline-0 focus:ring-2 focus:ring-offset-1 focus:ring-purple-700",
-//             { "text-green-800": varient === "green" },
-//             className
-//           )}
-//           {...rest}
-//         />
-//         {Icon && (
-//           <div className="absolute left-0 inset-y-0 flex flex-col items-center justify-center px-2 peer-focus:text-purple-700">
-//             <Icon />
-//           </div>
-//         )}
-//       </div>
-//     );
-//   }
-// );
-
-// Input.displayName = "Input";
-
-// export default Input;
-
-{
-  /*
-  //before-forwardref//
-import { cn } from "@/utilities/cn";
-import React, { ComponentProps } from "react";
-
-interface IInput extends ComponentProps<"input"> {
-  varient?: string;
-}
-const Input = ({ className, varient = "gray", ...rest }: IInput) => {
-  return (
-    <input
-      className={cn(
-        "rounded-xl border border-gray-300 px-3 py-2 text-sm font-medium text-gray-800",
-
-        { "text-green-800": varient === "green" },
-        className
-      )}
-      {...rest}
-    />
-  );
-};
-
-export default Input;
-*/
-}
