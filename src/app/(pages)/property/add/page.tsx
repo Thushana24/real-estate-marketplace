@@ -1,5 +1,6 @@
 import Footer from "@/app/components/Footer";
 import Header from "@/app/components/Header";
+import { AddPropertyForm } from "./AddPropertyForm";
 
 export default function Home() {
   return (
@@ -7,7 +8,9 @@ export default function Home() {
       <div className="w-full bg-gradient-to-r from-gray-400 to-pink-200">
         <Header />
       </div>
-      <main className="w-full flex-grow"></main>
+      <main className="w-full flex-grow">
+        <AddPropertyForm />
+      </main>
       <Footer />
     </div>
   );

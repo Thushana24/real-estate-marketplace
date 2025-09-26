@@ -16,7 +16,7 @@ const Header = () => {
               CasaGo
             </h1>
           </div>
-          {/* nav */}
+
           {/* desktop navigation */}
           <div className="hidden items-center justify-between gap-5 md:flex bg-gradient-to-r from-orange-500 to-pink-600 bg-clip-text text-transparent ">
             {navLinks.map(({ href, label }) => (
@@ -51,7 +51,6 @@ const Header = () => {
           />
           {/* menu container */}
           <div className="fixed top-0 right-0 z-50 flex h-full w-64 flex-col bg-gray-50 px-5 py-4 md:hidden">
-            {/* First row: Home link and Close button */}
             <div className="m-0 mb-4 flex items-center justify-between leading-none">
               <a
                 href={navLinks[0]?.href}
@@ -68,7 +67,6 @@ const Header = () => {
               </button>
             </div>
 
-            {/* Remaining navigation links */}
             <div className="flex flex-col gap-5">
               {navLinks.slice(1).map(({ href, label }) => (
                 <a

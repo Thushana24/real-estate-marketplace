@@ -45,4 +45,21 @@ const PropertySchema = z.object({
   PropertyImage: z.array(PropertyImageSchema).optional().default([]),
 });
 
-export { PropertySchema, PropertyImageSchema };
+const PropertyQuerySchema = z.object({
+  page: z
+    .string()
+    .optional()
+    .transform((val) => (val ? parseInt(val, 10) : 1))
+    .refine((val) => !isNaN(val) && val > 0, {
+      message: "Page must be a positive number",
+    }),
+  size: z
+    .string()
+    .optional()
+    .transform((val) => (val ? parseInt(val, 10) : 25))
+    .refine((val) => !isNaN(val) && val > 0, {
+      message: "Size must be a positive number",
+    }),
+  search: z.string().optional(),
+});
+export { PropertySchema, PropertyImageSchema, PropertyQuerySchema };

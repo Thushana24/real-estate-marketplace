@@ -3,7 +3,7 @@ import { useCreateMutation } from "../apiFactory";
 import { Property, PropertyImage } from "@prisma/client";
 import { PropertyInput } from "@/app/api/types";
 
-export const useLogin = ({
+export const useAddProperty = ({
   invalidateQueryKey,
 }: {
   invalidateQueryKey?: unknown[];

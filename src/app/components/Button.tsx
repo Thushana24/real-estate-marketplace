@@ -8,7 +8,7 @@ interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   loading?: boolean;
   children: ReactNode;
   className?: string;
-  leftIcon?: ReactNode; // optional left icon
+  leftIcon?: ReactNode;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -44,12 +44,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
               <div className="size-full rounded-xl border-t-2 border-white/20" />
             </span>
 
-            {/* Border All Except Top */}
             <span className="pointer-events-none absolute inset-0 overflow-hidden rounded-xl">
               <div className="size-full rounded-xl border border-t-0 border-white/10" />
             </span>
 
-            {/* Content */}
             <span className="relative flex items-center space-x-2 px-2.5">
               {loading ? (
                 <div className="flex items-center justify-center space-x-2">

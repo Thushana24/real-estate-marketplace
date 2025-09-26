@@ -48,7 +48,6 @@ export default async function privateRoute(
       );
     }
 
-    // Handle unexpected errors
     console.error("Unexpected error in privateRoute:", error);
     return NextResponse.json(
       {

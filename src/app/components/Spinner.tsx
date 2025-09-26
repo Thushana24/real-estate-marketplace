@@ -32,9 +32,9 @@ const Spinner = forwardRef<HTMLDivElement, ISpinner>(
       <div
         ref={ref}
         className={cn(`flex w-full items-center justify-center`, wrapperClass)}
-        role="status" // ARIA role to indicate loading status
-        aria-busy="true" // Indicates that the region is loading
-        aria-live="polite" // Politely inform assistive technology about the loading status
+        role="status"
+        aria-busy="true"
+        aria-live="polite"
       >
         <svg
           className={cn(SpinnerVariants({ size, className }))}

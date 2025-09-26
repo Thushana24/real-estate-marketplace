@@ -36,7 +36,6 @@ const HeroSection = () => {
           </h1>
 
           <div className="mt-6 flex w-full max-w-2xl flex-col gap-3 md:flex-row items-center">
-            {/* Search Bar */}
             <div className="flex w-full flex-1 items-center rounded-full bg-white px-3 py-2 shadow-lg sm:px-4 sm:py-3">
               <input
                 type="text"
@@ -47,8 +46,6 @@ const HeroSection = () => {
                 Search
               </button>
             </div>
-
-            {/* Post Ad Button */}
 
             <button
               onClick={() => router.push("/property/add")}

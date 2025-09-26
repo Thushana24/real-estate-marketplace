@@ -52,7 +52,7 @@ model Property {
   PropertyImage PropertyImage[]
 
   // Owner (seller)
-  ownerId Int  @unique(map: "ownerId")
+  ownerId Int
   Owner   User @relation("UserListings", fields: [ownerId], references: [id])
 
   createdAt DateTime @default(now())
@@ -67,7 +67,7 @@ model PropertyImage {
   thumbnail Boolean @default(false)
   order     Int     @default(1)
 
-  propertyId Int      @unique(map: "propertyId")
+  propertyId Int
   property   Property @relation(fields: [propertyId], references: [id])
 
   createdAt DateTime @default(now())

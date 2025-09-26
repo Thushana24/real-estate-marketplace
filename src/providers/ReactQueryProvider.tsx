@@ -8,7 +8,6 @@ export default function ReactQueryProvider({
 }: {
   children: ReactNode;
 }) {
-  // Create query client once per component lifecycle
   const [queryClient] = useState(() => new QueryClient());
 
   return (

@@ -1,4 +1,3 @@
-import Card from "./components/Card";
 import Footer from "./components/Footer";
 import HeroSection from "./components/HeroSection";
 
@@ -9,7 +8,7 @@ export default function Home() {
         <HeroSection />
 
         <div className="-mt-10 mb-10 flex w-full flex-col items-center justify-center gap-10 sm:-mt-16 md:-mt-20">
-          <Card />
+          Properties List
         </div>
         <Footer />
       </main>
